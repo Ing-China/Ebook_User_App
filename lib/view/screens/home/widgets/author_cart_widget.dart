@@ -22,17 +22,20 @@ class AuthorCartWidget extends StatelessWidget {
             child: Image.network(
               imageUrl,
               width: double.infinity,
-              height: 100,
+              height: 110,
               fit: BoxFit.cover,
             ),
           ),
           const SizedBox(height: 5),
           Text(
             name,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
-                fontSize: 16,
-                color: AppColors.primaryColor.withOpacity(0.5),
-                fontWeight: FontWeight.bold),
+              fontSize: Dimension.fontSizeLarge(context),
+              color: AppColors.primaryColor.withOpacity(0.5),
+              fontWeight: FontWeight.bold,
+            ),
           )
         ],
       ),

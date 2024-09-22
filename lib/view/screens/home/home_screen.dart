@@ -1,4 +1,4 @@
-import 'package:bro_s_journey/models/trending_book.dart';
+import 'package:bro_s_journey/models/book.dart';
 import 'package:bro_s_journey/models/author.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
@@ -30,16 +30,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 5));
     setState(() {
       _isLoading = false;
     });
   }
 
   Future<void> _refresh() async {
-    setState(() {
-      _isLoading = true;
-    });
+    // setState(() {
+    //   _isLoading = true;
+    // });
 
     await _loadData();
     _refreshController.refreshCompleted();
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: ButtonLabel(
                         label: 'Recommended Books', action_label: 'See More'),
                   ),
-                  ProductListView(books: recommendedBook),
+                  ProductListView(books: Book.recommendedBooks),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
                     child: ButtonLabel(
@@ -80,14 +80,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       action_label: 'See More',
                     ),
                   ),
-                  ProductListView(books: trendingBooks),
+                  ProductListView(books: Book.trendingBooks),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
                     child: ButtonLabel(
                         label: 'Top Authors', action_label: 'See More'),
                   ),
                   SizedBox(
-                    height: Dimension.screenHeightPercentage(context, 0.14),
+                    height: 140,
                     child: ListView.separated(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       separatorBuilder: (context, index) =>

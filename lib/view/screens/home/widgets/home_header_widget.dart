@@ -1,4 +1,5 @@
 import 'package:bro_s_journey/utils/app_constant.dart';
+import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,18 +26,19 @@ class HomeHeaderWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   "Kioway",
                   style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                    color: AppColors.primaryColor,
+                    fontSize: Dimension.fontSizeExtraLarge(context),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Text(
                   "Welcome back!",
                   style: TextStyle(
                       color: AppColors.primaryColor.withOpacity(0.3),
-                      fontSize: 18,
+                      fontSize: Dimension.fontSizeExtraLarge(context),
                       fontWeight: FontWeight.bold),
                 ),
               ],

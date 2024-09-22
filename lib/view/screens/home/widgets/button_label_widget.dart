@@ -1,4 +1,5 @@
 import 'package:bro_s_journey/utils/app_constant.dart';
+import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:flutter/material.dart';
 
 class ButtonLabel extends StatelessWidget {
@@ -18,10 +19,10 @@ class ButtonLabel extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             color: AppColors.primaryColor,
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: Dimension.fontSizeExtraLarge(context),
           ),
         ),
         GestureDetector(
@@ -32,7 +33,7 @@ class ButtonLabel extends StatelessWidget {
             action_label,
             style: TextStyle(
               color: AppColors.primaryColor.withOpacity(0.3),
-              fontSize: 16,
+              fontSize: Dimension.fontSizeLarge(context),
               fontWeight: FontWeight.bold,
             ),
           ),

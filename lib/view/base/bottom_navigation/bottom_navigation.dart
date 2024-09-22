@@ -1,6 +1,8 @@
+import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:bro_s_journey/view/screens/about/about_screen.dart';
 import 'package:bro_s_journey/view/screens/book/book_screen.dart';
+import 'package:bro_s_journey/view/screens/bookmarks/bookmark_screen.dart';
 import 'package:bro_s_journey/view/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +20,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   static const List<Widget> _screens = <Widget>[
     HomeScreen(),
     BookScreen(),
-    AboutScreen()
+    BookmarkScreen(),
+    AboutScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -28,45 +31,82 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   Color _iconColor(int index) {
-    return _selectedIndex == index ? Colors.black : Colors.grey;
+    return _selectedIndex == index ? AppColors.primaryColor : Colors.grey;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _screens[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _screens,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              CustomIcons.home,
-              color: _iconColor(0),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1 / 5),
+              spreadRadius: 1,
+              blurRadius: 2,
+              offset: const Offset(0, -2),
             ),
-            label: 'Home',
+          ],
+        ),
+        child: Container(
+          color: Colors.white,
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 25),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(
+                index: 0,
+                icon: CustomIcons.home,
+                label: 'Home',
+              ),
+              _buildNavItem(
+                index: 1,
+                icon: CustomIcons.book,
+                label: 'Books',
+              ),
+              _buildNavItem(
+                index: 2,
+                icon: CustomIcons.bookMark,
+                label: 'BookMark',
+              ),
+              _buildNavItem(
+                index: 3,
+                icon: CustomIcons.about,
+                label: 'Developer',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              CustomIcons.book,
-              color: _iconColor(1),
-            ),
-            label: 'Business',
+        ),
+      ),
+    );
+  }
+
+  GestureDetector _buildNavItem(
+      {required int index, required String icon, required String label}) {
+    return GestureDetector(
+      onTap: () {
+        _onItemTapped(index);
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            icon,
+            color: _iconColor(index),
           ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              CustomIcons.about,
-              color: _iconColor(2),
+          const SizedBox(height: 4),
+          Text(
+            label,
+            style: TextStyle(
+              color: _iconColor(index),
+              fontSize: 14,
             ),
-            label: 'School',
           ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
       ),
     );
   }
