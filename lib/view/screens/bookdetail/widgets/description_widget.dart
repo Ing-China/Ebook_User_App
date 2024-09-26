@@ -12,28 +12,31 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Overviewing',
-            style: TextStyle(
-              fontSize: 20,
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 100),
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Overviewing',
+              style: TextStyle(
+                fontSize: 20,
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            _book!.description,
-            style: TextStyle(
-              color: AppColors.primaryColor.withOpacity(0.5),
-              fontSize: 16,
-            ),
-          )
-        ],
+            const SizedBox(height: 10),
+            Text(
+              _book!.description,
+              style: TextStyle(
+                color: AppColors.primaryColor.withOpacity(0.5),
+                fontSize: 16,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -14,31 +14,34 @@ class ButtonLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: AppColors.primaryColor,
-            fontWeight: FontWeight.bold,
-            fontSize: Dimension.fontSizeExtraLarge(context),
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            print('See More clicked');
-          },
-          child: Text(
-            action_label,
+    return Padding(
+      padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
             style: TextStyle(
-              color: AppColors.primaryColor.withOpacity(0.3),
-              fontSize: Dimension.fontSizeLarge(context),
+              color: AppColors.primaryColor,
               fontWeight: FontWeight.bold,
+              fontSize: Dimension.fontSizeExtraLarge(context),
             ),
           ),
-        ),
-      ],
+          GestureDetector(
+            onTap: () {
+              print('See More clicked');
+            },
+            child: Text(
+              action_label,
+              style: TextStyle(
+                color: AppColors.primaryColor.withOpacity(0.3),
+                fontSize: Dimension.fontSizeLarge(context),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -25,6 +25,7 @@ class ProductListView extends StatelessWidget {
             name: book.name,
             authors: book.authors,
             rating: book.rating,
+            imageHeight: 225,
             onTap: () {
               Navigator.push(
                 context,

@@ -1,0 +1,12 @@
+{
+  "@@locale": "en",
+  "title": "Hello World!",
+  "language": "Language",
+  "@title": {
+    "description": "The welcome message"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Label for language option"
+  }
+}

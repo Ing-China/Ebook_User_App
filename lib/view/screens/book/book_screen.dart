@@ -1,8 +1,11 @@
+import 'package:bro_s_journey/controllers/book_controller.dart';
+import 'package:bro_s_journey/models/category.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/view/screens/book/widgets/all_book_list.dart';
+import 'package:bro_s_journey/view/screens/book/widgets/category_list_widget.dart';
 import 'package:bro_s_journey/view/screens/book/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:bro_s_journey/models/book.dart';
+import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class BookScreen extends StatefulWidget {
@@ -13,43 +16,40 @@ class BookScreen extends StatefulWidget {
 }
 
 class _BookScreenState extends State<BookScreen> {
-  bool _isLoading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    await Future.delayed(const Duration(seconds: 5));
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
-  Future<void> _refresh() async {
-    await _loadData();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.whiteColor,
-      body: SafeArea(
-        child: RefreshIndicator(
-          backgroundColor: AppColors.whiteColor,
-          color: AppColors.primaryColor,
-          onRefresh: _refresh,
+    return ChangeNotifierProvider(
+      create: (_) => BookController()..fetchBooksByCategory(1),
+      child: Scaffold(
+        backgroundColor: AppColors.whiteColor,
+        body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 const Search(),
-                Skeletonizer(
-                  enabled: _isLoading,
-                  child: AllBookList(
-                    books: Book.books,
-                  ),
+                Consumer<BookController>(
+                  builder: (context, controller, _) {
+                    return Column(
+                      children: [
+                        CategoryList(
+                          categories: Category.categories,
+                          onCategoryTap: controller.fetchBooksByCategory,
+                        ),
+                        Skeletonizer(
+                          enabled: controller.isLoading,
+                          enableSwitchAnimation: true,
+                          effect: PulseEffect(
+                            from: Colors.grey.shade50,
+                            to: Colors.grey.shade100,
+                            duration: const Duration(seconds: 1),
+                          ),
+                          child: AllBookList(
+                            books: controller.books,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
             ),

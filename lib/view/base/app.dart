@@ -1,9 +1,18 @@
+import 'package:bro_s_journey/providers/language_provider.dart';
+import 'package:bro_s_journey/view/base/bottom_navigation/bottom_navigation.dart';
 import 'package:bro_s_journey/view/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'bottom_navigation/bottom_navigation.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+import 'package:bro_s_journey/l10n/l10n.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => LanguageProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,9 +20,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreenWrapper(),
+    return ChangeNotifierProvider(
+      create: (_) => LanguageProvider(),
+      builder: (context, child) {
+        final provider = Provider.of<LanguageProvider>(context);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          supportedLocales: L10n.all,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          locale: provider.locale,
+          home: const SplashScreenWrapper(),
+        );
+      },
     );
   }
 }
@@ -29,7 +47,6 @@ class _SplashScreenWrapperState extends State<SplashScreenWrapper> {
   @override
   void initState() {
     super.initState();
-    // Delay navigation for 5 seconds
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -40,6 +57,6 @@ class _SplashScreenWrapperState extends State<SplashScreenWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return const SplashScreen(); // Use your custom splash screen here
+    return const SplashScreen();
   }
 }

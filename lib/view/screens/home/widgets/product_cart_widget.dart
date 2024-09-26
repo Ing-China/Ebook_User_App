@@ -1,6 +1,7 @@
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:bro_s_journey/utils/icons.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -11,6 +12,7 @@ class ProductCartWidget extends StatelessWidget {
   final String authors;
   final String rating;
   final VoidCallback onTap;
+  final double imageHeight;
 
   const ProductCartWidget({
     super.key,
@@ -20,6 +22,7 @@ class ProductCartWidget extends StatelessWidget {
     required this.authors,
     required this.rating,
     required this.onTap,
+    required this.imageHeight,
   });
 
   @override
@@ -34,10 +37,11 @@ class ProductCartWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
-                imageUrl,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                errorWidget: (context, url, error) => Icon(Icons.error),
                 width: double.infinity,
-                height: 225,
+                height: imageHeight,
                 fit: BoxFit.cover,
               ),
             ),

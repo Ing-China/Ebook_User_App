@@ -1,0 +1,12 @@
+{
+  "@@locale": "km",
+  "title": "សួស្តីពិភពលោក!",
+  "language": "ភាសា",
+  "@title": {
+    "description": "The welcome message in Khmer"
+  },
+  "language": "ភាសា",
+  "@language": {
+    "description": "Label for language option"
+  }
+}

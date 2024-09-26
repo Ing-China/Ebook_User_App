@@ -25,38 +25,51 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(
-        widget.title,
-        style: const TextStyle(
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1 / 0.5),
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: Offset(0, -2),
+          ),
+        ],
+      ),
+      child: AppBar(
+        title: Text(
+          widget.title,
+          style: const TextStyle(
             color: AppColors.primaryColor,
             fontWeight: FontWeight.bold,
-            fontSize: 20),
-      ),
-      centerTitle: true,
-      actions: [
-        if (widget.showBookMarkButton)
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: GestureDetector(
-              onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('${widget.title} bookmarked!')),
-                );
-              },
-              child: SizedBox(
-                child: SvgPicture.asset(
-                  CustomIcons.bookMark,
-                  width: 17,
-                  height: 20,
-                  color: AppColors.primaryColor,
+            fontSize: 20,
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          if (widget.showBookMarkButton)
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: GestureDetector(
+                onTap: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('${widget.title} bookmarked!')),
+                  );
+                },
+                child: SizedBox(
+                  child: SvgPicture.asset(
+                    CustomIcons.bookMark,
+                    width: 17,
+                    height: 20,
+                    color: AppColors.primaryColor,
+                  ),
                 ),
               ),
             ),
-          ),
-      ],
-      backgroundColor: AppColors.whiteColor,
-      scrolledUnderElevation: 0,
+        ],
+        backgroundColor: AppColors.whiteColor,
+        scrolledUnderElevation: 0,
+      ),
     );
   }
 }

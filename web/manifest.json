@@ -1,6 +1,6 @@
 {
-     "name": "Manga Book",
-     "short_name": "Manga Book",
+     "name": "InfiniteReads",
+     "short_name": "InfiniteReads",
      "start_url": ".",
      "display": "standalone",
      "background_color": "#0175C2",

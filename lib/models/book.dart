@@ -10,6 +10,8 @@ class Book {
   final String pages;
   final String description;
   final String pdfPath;
+  final int categoryId;
+  final bool isBookMark;
 
   Book({
     required this.id,
@@ -23,6 +25,8 @@ class Book {
     required this.pages,
     required this.description,
     required this.pdfPath,
+    required this.categoryId,
+    required this.isBookMark,
   });
 
   static List<Book> books = [
@@ -40,6 +44,8 @@ class Book {
       description: "A book description is a brief",
       pdfPath:
           "https://www.jica.go.jp/Resource/project/ghana/0604654/pdf/Module_6_main_content.pdf",
+      categoryId: 1,
+      isBookMark: true,
     ),
     Book(
       id: 2,
@@ -56,6 +62,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://americanenglish.state.gov/files/ae/resource_files/lesson_planning_101-pre-recording_0.pdf",
+      categoryId: 2,
+      isBookMark: true,
     ),
     Book(
       id: 3,
@@ -72,6 +80,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 3,
+      isBookMark: true,
     ),
     Book(
       id: 4,
@@ -88,6 +98,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 3,
+      isBookMark: true,
     ),
     Book(
       id: 5,
@@ -104,6 +116,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 3,
+      isBookMark: true,
     ),
     Book(
       id: 6,
@@ -120,6 +134,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 1,
+      isBookMark: true,
     ),
     Book(
       id: 7,
@@ -136,6 +152,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 1,
+      isBookMark: true,
     ),
     Book(
       id: 8,
@@ -152,6 +170,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 1,
+      isBookMark: true,
     ),
     Book(
       id: 9,
@@ -168,6 +188,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 1,
+      isBookMark: true,
     ),
     Book(
       id: 10,
@@ -184,6 +206,8 @@ class Book {
           "A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.A book description is a brief overview of the plot, main characters, and themes of the story. It's an important tool that helps in book promotion and sales. Many times, book descriptions also include information about the author. This helps to build credibility and establish a connection with the reader.",
       pdfPath:
           "https://www.igntu.ac.in/eContent/BEd-02Sem-DrRameshM-Teaching%20of%20Biological%20Science.pdf",
+      categoryId: 1,
+      isBookMark: true,
     ),
   ];
 
@@ -201,5 +225,20 @@ class Book {
 
   static List<Book> get trendingBooks {
     return books.where((book) => book.isTrending).toList();
+  }
+
+  static List<Book> getBooksByCategory(int categoryId) {
+    // If the first category is selected, return all books
+    if (categoryId == 1) {
+      return List.from(
+          books); // Return a fresh copy of all books to avoid references
+    }
+
+    // Otherwise, filter the books by the given categoryId
+    return books.where((book) => book.categoryId == categoryId).toList();
+  }
+
+  static List<Book> get bookMarks {
+    return books.where((book) => book.isBookMark).toList();
   }
 }

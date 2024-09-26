@@ -1,6 +1,6 @@
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/icons.dart';
-import 'package:bro_s_journey/view/screens/about/about_screen.dart';
+import 'package:bro_s_journey/view/screens/developer/developer_screen.dart';
 import 'package:bro_s_journey/view/screens/book/book_screen.dart';
 import 'package:bro_s_journey/view/screens/bookmarks/bookmark_screen.dart';
 import 'package:bro_s_journey/view/screens/home/home_screen.dart';
@@ -21,7 +21,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     HomeScreen(),
     BookScreen(),
     BookmarkScreen(),
-    AboutScreen(),
+    DeveloperScreen(),
   ];
 
   void _onItemTapped(int index) {
