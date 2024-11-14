@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:flutter/material.dart';
@@ -5,13 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
-  final bool showBackButton;
   final bool showBookMarkButton;
 
   const CustomAppBar({
     Key? key,
     required this.title,
-    this.showBackButton = false,
     this.showBookMarkButton = false,
   }) : super(key: key);
 
@@ -37,10 +36,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
         ],
       ),
       child: AppBar(
+        iconTheme: IconThemeData(color: ThemeHelper.getCanvasColor(context)),
         title: Text(
           widget.title,
-          style: const TextStyle(
-            color: AppColors.primaryColor,
+          style: TextStyle(
+            color: ThemeHelper.getCanvasColor(context),
             fontWeight: FontWeight.bold,
             fontSize: 20,
           ),
@@ -67,7 +67,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
             ),
         ],
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: ThemeHelper.getPrimaryColor(context),
         scrolledUnderElevation: 0,
       ),
     );

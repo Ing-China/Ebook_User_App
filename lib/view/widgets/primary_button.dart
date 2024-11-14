@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:flutter/material.dart';
 
@@ -19,14 +20,14 @@ class PrimaryButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: AppColors.primaryColor,
+          color: ThemeHelper.getCanvasColor(context),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
-            color: AppColors.whiteColor,
+            color: ThemeHelper.getPrimaryColor(context),
             fontWeight: FontWeight.bold,
           ),
         ),

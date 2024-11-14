@@ -1,10 +1,11 @@
-import 'package:bro_s_journey/utils/app_constant.dart';
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:bro_s_journey/view/screens/read/widgets/page_input_dialog.dart';
 import 'package:bro_s_journey/view/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class ReadScreen extends StatefulWidget {
   final String pdfPath;
@@ -20,28 +21,29 @@ class ReadScreen extends StatefulWidget {
 }
 
 class _ReadScreenState extends State<ReadScreen> {
-  late PDFViewController _pdfViewController;
   final TextEditingController _pageController = TextEditingController();
+  late PdfViewerController _pdfViewerController;
 
-  void _showPageDialog() {
+  @override
+  void initState() {
+    super.initState();
+    _pdfViewerController = PdfViewerController();
+  }
+
+  void _openPageDialog() {
     showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (context) {
         return PageInputDialog(
           pageController: _pageController,
-          onOk: () async {
+          onOk: () {
             final pageNumber = int.tryParse(_pageController.text);
             if (pageNumber != null) {
-              final totalPages = await _pdfViewController.getPageCount();
-              if (pageNumber > totalPages!) {
-                _pdfViewController.setPage(totalPages - 1);
-              } else if (pageNumber > 0) {
-                _pdfViewController.setPage(pageNumber - 1);
-              }
+              _pdfViewerController.jumpToPage(pageNumber);
             }
           },
           onClose: () {
-            // Handle any additional close actions if needed
+            _pageController.clear();
           },
         );
       },
@@ -51,49 +53,52 @@ class _ReadScreenState extends State<ReadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: ThemeHelper.getPrimaryColor(context),
       appBar: CustomAppBar(
         title: widget.name,
         showBookMarkButton: true,
       ),
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: PDF(
-              swipeHorizontal: true,
-              onViewCreated: (PDFViewController pdfViewController) {
-                _pdfViewController = pdfViewController;
-              },
-            ).cachedFromUrl(
+      body: SfPdfViewerTheme(
+        data: SfPdfViewerThemeData(
+          backgroundColor: ThemeHelper.getPrimaryColor(context),
+          progressBarColor: Colors.grey,
+        ),
+        child: Stack(
+          children: [
+            SfPdfViewer.network(
               widget.pdfPath,
-              placeholder: (progress) => Center(child: Text('$progress %')),
-              errorWidget: (error) => Center(child: Text(error.toString())),
+              pageSpacing: 10,
+              canShowPageLoadingIndicator: true,
+              canShowScrollHead: false,
+              scrollDirection: PdfScrollDirection.horizontal,
+              pageLayoutMode: PdfPageLayoutMode.single,
+              controller: _pdfViewerController,
             ),
-          ),
-          Positioned(
-            top: 20,
-            right: 20,
-            child: GestureDetector(
-              onTap: _showPageDialog,
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: SvgPicture.asset(
-                    CustomIcons.search,
-                    color: AppColors.whiteColor,
-                    width: 15,
-                    height: 20,
+            Positioned(
+              top: 20,
+              right: 20,
+              child: GestureDetector(
+                onTap: _openPageDialog,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: ThemeHelper.getCanvasColor(context),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      CustomIcons.search,
+                      color: ThemeHelper.getPrimaryColor(context),
+                      width: 15,
+                      height: 20,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

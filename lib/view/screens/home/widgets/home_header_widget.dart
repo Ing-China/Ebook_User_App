@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:bro_s_journey/utils/icons.dart';
@@ -34,7 +35,7 @@ class HomeHeaderWidget extends StatelessWidget {
                   Text(
                     "Kioway",
                     style: TextStyle(
-                      color: AppColors.primaryColor,
+                      color: ThemeHelper.getCanvasColor(context),
                       fontSize: Dimension.fontSizeExtraLarge(context),
                       fontWeight: FontWeight.bold,
                     ),
@@ -42,7 +43,8 @@ class HomeHeaderWidget extends StatelessWidget {
                   Text(
                     "Welcome back!",
                     style: TextStyle(
-                        color: AppColors.primaryColor.withOpacity(0.3),
+                        color: ThemeHelper.getCanvasColor(context)
+                            .withOpacity(0.3),
                         fontSize: Dimension.fontSizeExtraLarge(context),
                         fontWeight: FontWeight.bold),
                   ),
@@ -53,8 +55,8 @@ class HomeHeaderWidget extends StatelessWidget {
           Container(
             width: 35,
             height: 35,
-            decoration: const BoxDecoration(
-              color: AppColors.primaryColor,
+            decoration: BoxDecoration(
+              color: ThemeHelper.getCanvasColor(context),
               shape: BoxShape.circle,
             ),
             child: IconButton(
@@ -62,7 +64,7 @@ class HomeHeaderWidget extends StatelessWidget {
                 CustomIcons.notification,
                 width: 20,
                 height: 20,
-                color: AppColors.whiteColor,
+                color: ThemeHelper.getPrimaryColor(context),
               ),
               onPressed: () {
                 print('Notification Click');

@@ -1,4 +1,4 @@
-import 'package:bro_s_journey/utils/app_constant.dart';
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,7 +24,7 @@ class ButtonLanguage extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: AppColors.whiteColor,
+          color: ThemeHelper.getBackgroundColor(context),
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -48,9 +48,9 @@ class ButtonLanguage extends StatelessWidget {
                 const SizedBox(width: 15),
                 Text(
                   language,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 17,
-                    color: AppColors.primaryColor,
+                    color: ThemeHelper.getCanvasColor(context),
                   ),
                 ),
               ],
@@ -59,6 +59,7 @@ class ButtonLanguage extends StatelessWidget {
               isSelected ? CustomIcons.active : CustomIcons.inActive,
               width: 24,
               height: 24,
+              color: ThemeHelper.getCanvasColor(context),
             ),
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class ButtonLabel extends StatelessWidget {
           Text(
             label,
             style: TextStyle(
-              color: AppColors.primaryColor,
+              color: ThemeHelper.getCanvasColor(context),
               fontWeight: FontWeight.bold,
               fontSize: Dimension.fontSizeExtraLarge(context),
             ),
@@ -34,7 +35,7 @@ class ButtonLabel extends StatelessWidget {
             child: Text(
               action_label,
               style: TextStyle(
-                color: AppColors.primaryColor.withOpacity(0.3),
+                color: ThemeHelper.getCanvasColor(context).withOpacity(0.3),
                 fontSize: Dimension.fontSizeLarge(context),
                 fontWeight: FontWeight.bold,
               ),

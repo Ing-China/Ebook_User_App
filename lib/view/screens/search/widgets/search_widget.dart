@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:flutter/material.dart';
@@ -21,13 +22,19 @@ class SearchWidget extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              style: TextStyle(
+                color: ThemeHelper.getCanvasColor(context),
+              ),
               decoration: InputDecoration(
                 hintText: "Search Book....",
+                hintStyle: TextStyle(
+                  color: ThemeHelper.getCanvasColor(context),
+                ),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(15),
                   child: SvgPicture.asset(
                     CustomIcons.search,
-                    color: AppColors.primaryColor,
+                    color: ThemeHelper.getCanvasColor(context),
                   ),
                 ),
                 suffixIcon: GestureDetector(
@@ -38,27 +45,30 @@ class SearchWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(15),
                     child: SvgPicture.asset(
                       CustomIcons.fillter,
-                      color: AppColors.primaryColor,
+                      color: ThemeHelper.getCanvasColor(context),
                     ),
                   ),
                 ),
-                border: OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: AppColors.primaryColor,
+                  borderSide: BorderSide(
+                    color: ThemeHelper.getCanvasColor(context),
+                    width: 1,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: AppColors.primaryColor,
+                  borderSide: BorderSide(
+                    color: ThemeHelper.getCanvasColor(context),
                     width: 1,
                   ),
                 ),
                 disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(
-                      color: AppColors.primaryColor.withOpacity(0.3)),
+                    color: ThemeHelper.getCanvasColor(context),
+                    width: 1,
+                  ),
                 ),
               ),
             ),
@@ -67,12 +77,12 @@ class SearchWidget extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
             },
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
               child: Text(
                 "Cancel",
                 style: TextStyle(
-                  color: AppColors.primaryColor,
+                  color: ThemeHelper.getCanvasColor(context),
                   fontSize: 16,
                 ),
               ),

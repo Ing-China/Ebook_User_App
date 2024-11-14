@@ -1,6 +1,6 @@
 import 'package:bro_s_journey/controllers/language_controller.dart';
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/providers/language_provider.dart';
-import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/images.dart';
 import 'package:bro_s_journey/view/screens/language/widgets/language_button_widget.dart';
 import 'package:bro_s_journey/view/widgets/app_bar.dart';
@@ -29,7 +29,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: ThemeHelper.getPrimaryColor(context),
       appBar: CustomAppBar(
         title: AppLocalizations.of(context)!.language,
         showBookMarkButton: false,

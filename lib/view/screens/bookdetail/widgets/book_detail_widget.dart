@@ -1,4 +1,6 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/models/book.dart';
+import 'package:bro_s_journey/models/bookz.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +9,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 class BookDetail extends StatelessWidget {
   const BookDetail({
     super.key,
-    required Book? book,
+    required Bookz? book,
   }) : _book = book;
 
-  final Book? _book;
+  final Bookz? _book;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.whiteColor,
+      color: ThemeHelper.getPrimaryColor(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -33,11 +35,11 @@ class BookDetail extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      _book!.rating,
-                      style: const TextStyle(
+                      _book!.rating!,
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primaryColor,
+                        color: ThemeHelper.getCanvasColor(context),
                       ),
                     ),
                   ],
@@ -47,7 +49,7 @@ class BookDetail extends StatelessWidget {
                   'Ratting',
                   style: TextStyle(
                     fontSize: 16,
-                    color: AppColors.primaryColor.withOpacity(0.3),
+                    color: ThemeHelper.getCanvasColor(context).withOpacity(0.3),
                   ),
                 )
               ],
@@ -56,17 +58,17 @@ class BookDetail extends StatelessWidget {
           Container(
             height: 50,
             width: 1,
-            color: AppColors.primaryColor.withOpacity(0.3),
+            color: ThemeHelper.getCanvasColor(context).withOpacity(0.3),
           ),
           Expanded(
             child: Column(
               children: [
                 Text(
-                  _book!.languageType,
-                  style: const TextStyle(
+                  _book!.language!,
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.primaryColor,
+                    color: ThemeHelper.getCanvasColor(context),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -74,7 +76,7 @@ class BookDetail extends StatelessWidget {
                   'Language',
                   style: TextStyle(
                     fontSize: 16,
-                    color: AppColors.primaryColor.withOpacity(0.3),
+                    color: ThemeHelper.getCanvasColor(context).withOpacity(0.3),
                   ),
                 )
               ],
@@ -83,17 +85,17 @@ class BookDetail extends StatelessWidget {
           Container(
             height: 50,
             width: 1,
-            color: AppColors.primaryColor.withOpacity(0.3),
+            color: ThemeHelper.getCanvasColor(context).withOpacity(0.3),
           ),
           Expanded(
             child: Column(
               children: [
                 Text(
-                  _book!.pages,
-                  style: const TextStyle(
+                  _book!.pages!,
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.primaryColor,
+                    color: ThemeHelper.getCanvasColor(context),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -101,7 +103,7 @@ class BookDetail extends StatelessWidget {
                   'Pages',
                   style: TextStyle(
                     fontSize: 16,
-                    color: AppColors.primaryColor.withOpacity(0.3),
+                    color: ThemeHelper.getCanvasColor(context).withOpacity(0.3),
                   ),
                 )
               ],

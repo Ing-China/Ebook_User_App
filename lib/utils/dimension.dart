@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bro_s_journey/helper/responsive_helper.dart';
+import 'package:bro_s_journey/helpers/responsive_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

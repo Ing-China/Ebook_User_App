@@ -30,7 +30,7 @@ class AllBookList extends StatelessWidget {
             Navigator.push(
               context,
               PageTransition(
-                child: BookDetailScreen(id: book.id, name: book.name),
+                child: BookDetailScreen(id: '1', name: book.name),
                 type: PageTransitionType.rightToLeft,
               ),
             );

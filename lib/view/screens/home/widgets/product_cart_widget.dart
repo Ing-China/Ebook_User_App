@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:bro_s_journey/utils/icons.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ProductCartWidget extends StatelessWidget {
-  final int id;
+  final String id;
   final String imageUrl;
   final String name;
   final String authors;
@@ -31,7 +32,7 @@ class ProductCartWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 150,
-        color: AppColors.whiteColor,
+        color: ThemeHelper.getPrimaryColor(context),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,7 +52,7 @@ class ProductCartWidget extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: Dimension.fontSizeLarge(context),
-                color: AppColors.primaryColor,
+                color: ThemeHelper.getCanvasColor(context),
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -59,7 +60,7 @@ class ProductCartWidget extends StatelessWidget {
             Text(
               authors,
               style: TextStyle(
-                color: AppColors.primaryColor.withOpacity(0.3),
+                color: ThemeHelper.getCanvasColor(context),
                 fontSize: Dimension.fontSizeLarge(context),
               ),
               maxLines: 1,
@@ -77,7 +78,7 @@ class ProductCartWidget extends StatelessWidget {
                 Text(
                   rating,
                   style: TextStyle(
-                    color: AppColors.primaryColor,
+                    color: ThemeHelper.getCanvasColor(context),
                     fontSize: Dimension.fontSizeDefault(context),
                     fontWeight: FontWeight.bold,
                   ),

@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:bro_s_journey/view/screens/developer/developer_screen.dart';
@@ -31,7 +32,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   Color _iconColor(int index) {
-    return _selectedIndex == index ? AppColors.primaryColor : Colors.grey;
+    return _selectedIndex == index
+        ? ThemeHelper.getCanvasColor(context)
+        : ThemeHelper.getCanvasColor(context).withOpacity(0.3);
   }
 
   @override
@@ -53,7 +56,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ],
         ),
         child: Container(
-          color: Colors.white,
+          color: ThemeHelper.getPrimaryColor(context),
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 25),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

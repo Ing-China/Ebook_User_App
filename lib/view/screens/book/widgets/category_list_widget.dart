@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/models/category.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
@@ -45,7 +46,9 @@ class _CategoryListState extends State<CategoryList> {
               onTap: () => _onCategoryTap(index),
               child: Container(
                 decoration: BoxDecoration(
-                  color: isSelected ? Colors.black : Colors.white,
+                  color: isSelected
+                      ? ThemeHelper.getCanvasColor(context)
+                      : ThemeHelper.getBackgroundColor(context),
                   border: Border.all(
                     color: isSelected ? Colors.transparent : Colors.black,
                   ),
@@ -56,7 +59,9 @@ class _CategoryListState extends State<CategoryList> {
                 child: Text(
                   category.name,
                   style: TextStyle(
-                    color: isSelected ? Colors.white : AppColors.primaryColor,
+                    color: isSelected
+                        ? ThemeHelper.getPrimaryColor(context)
+                        : ThemeHelper.getCanvasColor(context),
                     fontSize: Dimension.fontSizeLarge(context),
                   ),
                 ),

@@ -1,6 +1,6 @@
 import 'package:bro_s_journey/controllers/book_controller.dart';
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/models/category.dart';
-import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/view/screens/book/widgets/all_book_list.dart';
 import 'package:bro_s_journey/view/screens/book/widgets/category_list_widget.dart';
 import 'package:bro_s_journey/view/screens/book/widgets/search_widget.dart';
@@ -21,7 +21,7 @@ class _BookScreenState extends State<BookScreen> {
     return ChangeNotifierProvider(
       create: (_) => BookController()..fetchBooksByCategory(1),
       child: Scaffold(
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: ThemeHelper.getPrimaryColor(context),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -39,8 +39,8 @@ class _BookScreenState extends State<BookScreen> {
                           enabled: controller.isLoading,
                           enableSwitchAnimation: true,
                           effect: PulseEffect(
-                            from: Colors.grey.shade50,
-                            to: Colors.grey.shade100,
+                            from: ThemeHelper.getGreyShade50(context),
+                            to: ThemeHelper.getGreyShade100(context),
                             duration: const Duration(seconds: 1),
                           ),
                           child: AllBookList(

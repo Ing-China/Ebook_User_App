@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/icons.dart';
 import 'package:bro_s_journey/view/screens/search/search_screen.dart';
@@ -29,25 +30,28 @@ class Search extends StatelessWidget {
           enabled: false,
           decoration: InputDecoration(
             hintText: "Search Book....",
+            hintStyle: TextStyle(
+              color: ThemeHelper.getCanvasColor(context),
+            ),
             suffixIcon: Padding(
               padding: const EdgeInsets.all(15),
               child: SizedBox(
                 child: SvgPicture.asset(
                   CustomIcons.search,
-                  color: AppColors.primaryColor.withOpacity(0.3),
+                  color: ThemeHelper.getCanvasColor(context),
                 ),
               ),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: AppColors.primaryColor,
+              borderSide: BorderSide(
+                color: ThemeHelper.getCanvasColor(context),
               ),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: AppColors.primaryColor.withOpacity(0.3),
+                color: ThemeHelper.getCanvasColor(context),
               ),
             ),
           ),

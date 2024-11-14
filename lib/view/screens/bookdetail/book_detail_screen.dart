@@ -1,5 +1,6 @@
-import 'package:bro_s_journey/controllers/book_detail_controller.dart';
-import 'package:bro_s_journey/utils/app_constant.dart';
+import 'package:bro_s_journey/controllers/bookz_detail_controller.dart';
+import 'package:bro_s_journey/helpers/theme_helper.dart';
+import 'package:bro_s_journey/models/bookz.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:bro_s_journey/view/screens/bookdetail/widgets/book_detail_widget.dart';
 import 'package:bro_s_journey/view/screens/bookdetail/widgets/description_widget.dart';
@@ -13,7 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class BookDetailScreen extends StatefulWidget {
-  final int id;
+  final String id;
   final String name;
   const BookDetailScreen({super.key, required this.id, required this.name});
 
@@ -25,22 +26,22 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => BookdetailController()..fetchBookById(widget.id),
+      create: (_) => BookzDetailController()..fecthBookById(widget.id),
       child: Scaffold(
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: ThemeHelper.getPrimaryColor(context),
         appBar: CustomAppBar(
           title: widget.name,
           showBookMarkButton: true,
         ),
-        body: Consumer<BookdetailController>(
+        body: Consumer<BookzDetailController>(
           builder: (context, controller, _) {
-            final book = controller.book;
+            final book = controller.book ?? Bookz.fakeBookz[0];
             return Skeletonizer(
               enabled: controller.isLoading,
               enableSwitchAnimation: true,
               effect: PulseEffect(
-                from: Colors.grey.shade50,
-                to: Colors.grey.shade100,
+                from: ThemeHelper.getGreyShade50(context),
+                to: ThemeHelper.getGreyShade100(context),
                 duration: const Duration(seconds: 1),
               ),
               child: Stack(
@@ -69,7 +70,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       height: 90,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: AppColors.whiteColor,
+                          color: ThemeHelper.getPrimaryColor(context),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.1),
@@ -94,8 +95,8 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                               duration: Duration(milliseconds: 800),
                               isIos: true,
                               child: ReadScreen(
-                                pdfPath: book!.pdfPath,
-                                name: book.name,
+                                pdfPath: book.pdf!,
+                                name: book.name!,
                               ),
                               type: PageTransitionType.rightToLeft,
                             ),

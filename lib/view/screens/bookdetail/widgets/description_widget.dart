@@ -1,14 +1,16 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/models/book.dart';
+import 'package:bro_s_journey/models/bookz.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:flutter/material.dart';
 
 class Description extends StatelessWidget {
   const Description({
     super.key,
-    required Book? book,
+    required Bookz? book,
   }) : _book = book;
 
-  final Book? _book;
+  final Bookz? _book;
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +21,19 @@ class Description extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Overviewing',
               style: TextStyle(
                 fontSize: 20,
-                color: AppColors.primaryColor,
+                color: ThemeHelper.getCanvasColor(context),
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 10),
             Text(
-              _book!.description,
+              _book!.description!,
               style: TextStyle(
-                color: AppColors.primaryColor.withOpacity(0.5),
+                color: ThemeHelper.getCanvasColor(context).withOpacity(0.5),
                 fontSize: 16,
               ),
             )

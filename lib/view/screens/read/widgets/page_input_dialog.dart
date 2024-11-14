@@ -22,17 +22,17 @@ class PageInputDialog extends StatelessWidget {
       ),
       backgroundColor: AppColors.whiteColor,
       content: Container(
-        padding: const EdgeInsets.all(15),
+        padding: EdgeInsets.all(15),
         width: Dimension.screenWidthPercentage(context, 1),
-        height: Dimension.screenHeightPercentage(context, 0.2),
+        height: Dimension.screenHeightPercentage(context, 0.22),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text(
+            Text(
               'Go to page',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: Dimension.fontSizeExtraLarge(context),
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
               ),
@@ -69,10 +69,10 @@ class PageInputDialog extends StatelessWidget {
                     onClose();
                     Navigator.of(context).pop();
                   },
-                  child: const Text(
+                  child: Text(
                     'Close',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: Dimension.fontSizeLarge(context),
                       color: Colors.red,
                     ),
                   ),
@@ -83,10 +83,10 @@ class PageInputDialog extends StatelessWidget {
                     Navigator.of(context).pop();
                     pageController.clear();
                   },
-                  child: const Text(
+                  child: Text(
                     'Okay',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: Dimension.fontSizeLarge(context),
                       color: AppColors.primaryColor,
                     ),
                   ),

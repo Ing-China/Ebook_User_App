@@ -1,3 +1,4 @@
+import 'package:bro_s_journey/helpers/theme_helper.dart';
 import 'package:bro_s_journey/utils/app_constant.dart';
 import 'package:bro_s_journey/utils/dimension.dart';
 import 'package:bro_s_journey/utils/icons.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class AllBookCart extends StatelessWidget {
+class AllBookMarkCart extends StatelessWidget {
   final int id;
   final String name;
   final String author;
@@ -14,7 +15,7 @@ class AllBookCart extends StatelessWidget {
   final String imageUrl;
   final VoidCallback onTap;
 
-  const AllBookCart({
+  const AllBookMarkCart({
     super.key,
     required this.id,
     required this.name,
@@ -54,7 +55,7 @@ class AllBookCart extends StatelessWidget {
                       style: TextStyle(
                         fontSize: Dimension.fontSizeLarge(context),
                         fontWeight: FontWeight.bold,
-                        color: AppColors.primaryColor,
+                        color: ThemeHelper.getCanvasColor(context),
                       ),
                     ),
                     const SizedBox(height: 5),
@@ -62,7 +63,7 @@ class AllBookCart extends StatelessWidget {
                       author,
                       style: TextStyle(
                         fontSize: Dimension.fontSizeLarge(context),
-                        color: AppColors.primaryColor.withOpacity(0.3),
+                        color: ThemeHelper.getCanvasColor(context),
                       ),
                     ),
                     const SizedBox(height: 5),
@@ -79,6 +80,7 @@ class AllBookCart extends StatelessWidget {
                           style: TextStyle(
                             fontSize: Dimension.fontSizeDefault(context),
                             fontWeight: FontWeight.bold,
+                            color: ThemeHelper.getCanvasColor(context),
                           ),
                         ),
                       ],
@@ -91,6 +93,7 @@ class AllBookCart extends StatelessWidget {
                     onTap: () {},
                     child: SvgPicture.asset(
                       CustomIcons.bookMark,
+                      color: ThemeHelper.getCanvasColor(context),
                     ),
                   ),
                 )
